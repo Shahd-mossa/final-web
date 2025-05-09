@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   <title>Styled Hair Studio</title>
+   <style>
+     /* ✅ GLOBAL FIXES */
+     * {
+       box-sizing: border-box;
+     }
+ 
+     html, body {
+       margin: 0;
+       padding: 0;
+       overflow-x: hidden;
+       font-family: 'Segoe UI', sans-serif;
+       background: #f5ebed;
+       color: #4a4a4a;
+       cursor: url('https://cur.cursors-4u.net/others/oth-4/oth319.cur'), auto;
+     }
+ 
+     /* === HEADER === */
+     header {
+       text-align: center;
+       padding: 40px 20px;
+       background-color: #eab0bb;
+     }
+ 
+     header h1 {
+       margin: 0;
+       font-size: 2.8em;
+       color: #5e3c3c;
+     }
+ 
+     header p {
+       margin: 8px 0 0;
+       font-size: 1.2em;
+       color: #5e3c3c;
+     }
+ 
+     /* === SERVICES GRID === */
+     .service-grid {
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+       gap: 30px;
+       padding: 40px 20px;
+     }
+ 
+     .service-card {
+       background: #ffffff;
+       border: 1px solid #eab0bb;
+       border-radius: 12px;
+       padding: 20px;
+       text-align: center;
+       transition: 0.3s ease;
+     }
+ 
+     .service-card:hover {
+       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+       transform: translateY(15px);
+     }
+ 
+     .service-card img {
+       width: 100%;
+       height: 160px;
+       object-fit: cover;
+       border-radius: 8px;
+       margin-bottom: 15px;
+     }
+ 
+     .service-card h3 {
+       margin: 10px 0 5px;
+       font-size: 1.3em;
+       color: #5e3c3c;
+     }
+ 
+     .service-card p {
+       font-size: 1.1em;
+       color: #4a4a4a;
+     }
+ 
+     .service-card button {
+       margin-top: 10px;
+       padding: 10px 18px;
+       background: #d47588;
+       color: white;
+       border: none;
+       border-radius: 8px;
+       cursor: pointer;
+       transition: 0.2s;
+     }
+ 
+     .service-card button:hover {
+       background: #ffb1c1;
+     }
+ 
+     footer {
+       text-align: center;
+       padding: 20px;
+       background-color: #eab0bb;
+       font-size: 0.9em;
+     }
+   </style>
+ </head>
+ <body>
+   <header>
+     <h1>Styled Hair Studio</h1>
+     <p>Luxury Hair Services for Every Look</p>
+   </header>
+ 
+   <main class="service-grid">
+     <div class="service-card">
+       <img src="https://images.pexels.com/photos/3993449/pexels-photo-3993449.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Haircut" />
+       <h3>Haircut</h3>
+       <p>EGP500</p>
+       <button>Book Now</button>
+     </div>
+ 
+     <div class="service-card">
+       <img src="https://images.pexels.com/photos/3993324/pexels-photo-3993324.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Hair Dyeing" />
+       <h3>Hair Dyeing</h3>
+       <p>EGP5600</p>
+       <button>Book Now</button>
+     </div>
+ 
+     <div class="service-card">
+       <img src="https://images.pexels.com/photos/3993446/pexels-photo-3993446.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Hair Treatment" />
+       <h3>Hair Treatment</h3>
+       <p>EGP7000</p>
+       <button>Book Now</button>
+     </div>
+ 
+     <div class="service-card">
+       <img src="https://th.bing.com/th/id/OIP.DGvJ3_XlqYNt4xdtumWougHaJJ?rs=1&pid=ImgDetMain" alt="Babyliss Styling" />
+       <h3>Babyliss Styling</h3>
+       <p>EGP650</p>
+       <button>Book Now</button>
+     </div>
+   </main>
+ 
+   <footer>
+     <p>&copy; 2025 Styled Hair Studio | All rights reserved</p>
+   </footer>
+ 
+   <script>
+     function toggleDrawer() {
+       const drawer = document.getElementById('drawer');
+       const overlay = document.getElementById('overlay');
+   
+       drawer.classList.toggle('open'); // show/hide the drawer
+       overlay.style.display = drawer.classList.contains('open') ? 'block' : 'none'; // show/hide overlay
+     }
+   
+     // Button click alerts
+     document.querySelectorAll('button').forEach(button => {
+       button.addEventListener('click', () => {
+         alert("Booking request sent! We'll contact you shortly.");
+       });
+     });
+   </script>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Body Care Services</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eab0bb;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 3rem;
+  color: #5e3c3c; /* darker baby pink (rose-like) */
+  font-weight: bold;
+}
+
+    .products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .product {
+      width: 220px;
+      background: #f5ebed;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .product img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .product h3 {
+      font-size: 18px;
+      margin: 15px 0 10px;
+    }
+
+    .product p {
+      margin: 5px 0;
+      color: #555;
+    }
+
+    .product button {
+      margin-top: 10px;
+      background: #d47588;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .product button:hover {
+      background-color: #ffb1c1;
+      transform: scale(1.05);
+    }
+
+    .cart-icon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #5e3c3c;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #ffc0cb;
+      color: #333;
+      padding: 15px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      z-index: 1000;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .toast.show {
+      display: flex;
+    }
+
+    .close-toast {
+      cursor: pointer;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Slide-in cart styles */
+    .cart-panel {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 350px;
+      height: 100%;
+      background: white;
+      box-shadow: -4px 0 20px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      z-index: 2000;
+      transition: right 0.4s ease;
+      overflow-y: auto;
+    }
+
+    .cart-panel.open {
+      right: 0;
+    }
+
+    .cart-panel h2 {
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+
+    .cart-item img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      margin-right: 10px;
+      border-radius: 5px;
+    }
+
+    .cart-item-details {
+      flex: 1;
+    }
+
+    .qty-controls {
+      display: flex;
+      gap: 5px;
+    }
+
+    .qty-controls button {
+      padding: 4px 10px;
+      font-size: 14px;
+      background: #ddd;
+      border: none;
+      cursor: pointer;
+    }
+
+    .remove-btn {
+      color:  rgb(235, 132, 188);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .close-cart {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Body Care Services</h1>
+  <div class="cart-icon" onclick="toggleCart()">🛒 Cart</div>
+
+  <div class="products">
+    <div class="product">
+      <img src="wax.jpeg" alt="wax">
+      <h3>Waxing Full body</h3>
+      <p>EGP 350</p>
+      <button onclick="addToCart('Full body waxing', 350, 'wax.jpeg')">Add service</button>
+    </div>
+    <div class="product">
+      <img src="sugar.jpg" alt="sugar">
+      <h3>Sweet full body</h3>
+      <p>EGP 400</p>
+      <button onclick="addToCart('Sweet full body', 400, 'sugar.jpg')">Add service</button>
+    </div>
+    <div class="product">
+      <img src="moro.jpg" alt="moro">
+      <h3>Moroccan bath</h3>
+      <p>EGP 400</p>
+      <button onclick="addToCart('Moroccan bath', 400, 'moro.jpg')">Add service</button>
+    </div>
+    <div class="product">
+      <img src="scrub.jpg" alt="scrub">
+      <h3>Full body scrub</h3>
+      <p>EGP 150</p>
+      <button onclick="addToCart('Full body scrub', 150, 'scrub.jpg')">Add service</button>
+    </div>
+    <div class="product">
+      <img src="mass.jpg" alt="massage">
+      <h3>Full body massage</h3>
+      <p>EGP 275</p>
+      <button onclick="addToCart('Full body massage', 275, 'mass.jpg')">Add service</button>
+    </div>
+    <div class="product">
+      <img src="ther.webp" alt="thread">
+      <h3>Full face thread</h3>
+      <p>EGP 75</p>
+      <button onclick="addToCart('Full face thread', 75, 'ther.webp')">Add service</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">
+    <span id="toast-message">Service has been added successfully!</span>
+    <span class="close-toast" onclick="closeToast()">×</span>
+  </div>
+
+  <div class="cart-panel" id="cart-panel">
+    <span class="close-cart" onclick="toggleCart()">×</span>
+    <h2>My Cart</h2>
+    <div id="cart-items"></div>
+    <hr>
+    <div style="margin-top: 20px;">
+      <strong>Sub-total</strong>: <span style="float:right; color:  rgb(235, 132, 188);"><strong><span id="total">0</span> EGP</strong></span>
+    </div>
+    <div style="margin-top: 30px;">
+      <button onclick="window.location.href='cart.html'" style="width: 100%; padding: 10px; border: 1px solid rgb(189, 21, 164); background: white; color: rgb(235, 132, 188); font-weight: bold; border-radius: 5px; cursor: pointer;">View Cart</button>
+      <button style="width: 100%; padding: 12px; margin-top: 10px; background-color: rgb(128, 0, 128); color: white; font-weight: bold; border: none; border-radius: 5px; cursor: pointer;">Proceed to Checkout</button>
+    </div>
+  </div>
+  
+  <script>
+    function toggleCart() {
+      document.getElementById("cart-panel").classList.toggle("open");
+      updateCartDisplay();
+    }
+
+    function addToCart(name, price, image) {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const existing = cart.find(item => item.name === name);
+
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ name, price, image, qty: 1 });
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      showToast(`${name} has been added to your cart!`);
+      updateCartDisplay();
+    }
+
+    function updateCartDisplay() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const container = document.getElementById("cart-items");
+      const totalEl = document.getElementById("total");
+      container.innerHTML = "";
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        const subtotal = item.price * item.qty;
+        total += subtotal;
+
+        const div = document.createElement("div");
+        div.classList.add("cart-item");
+        div.innerHTML = `
+          <img src="${item.image}" alt="${item.name}">
+          <div class="cart-item-details">
+            <strong>${item.name}</strong><br>
+            EGP ${item.price} × ${item.qty} = EGP ${subtotal}
+            <div class="qty-controls">
+              <button onclick="changeQty(${index}, -1)">-</button>
+              <span>${item.qty}</span>
+              <button onclick="changeQty(${index}, 1)">+</button>
+              <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+            </div>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+
+      totalEl.textContent = total;
+    }
+
+    function changeQty(index, delta) {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartDisplay();
+    }
+
+    function removeItem(index) {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartDisplay();
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      const messageEl = document.getElementById("toast-message");
+
+      messageEl.textContent = message;
+      toast.classList.add("show");
+
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 3000);
+    }
+
+    function closeToast() {
+      document.getElementById("toast").classList.remove("show");
+    }
+  </script>
+</body>
+</html>
