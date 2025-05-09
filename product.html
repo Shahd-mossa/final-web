@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glam N Go Store</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'monaco', monospace;
+      background-color: #f5ebed;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 30px;
+      border-bottom: 1px solid #ddd;
+    }
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+    .search-bar {
+      flex-grow: 1;
+      margin: 0 30px;
+    }
+    .search-bar input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      font-size: 14px;
+    }
+    .nav-bar {
+      background: #ffb1c1;
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      padding: 12px 0;
+    }
+    .nav-bar a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: bold;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+    .nav-bar a:hover {
+      text-decoration: underline;
+    }
+    .tab-content {
+      display: none;
+      padding: 40px;
+    }
+    .tab-content.active {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .product {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      width: 220px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .product img {
+      max-width: 100%;
+      height: 160px;
+      object-fit: contain;
+    }
+    .tag {
+      background-color: black;
+      color: white;
+      display: inline-block;
+      padding: 4px 8px;
+      font-size: 12px;
+      font-weight: bold;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+    .brand {
+      color: gray;
+      font-size: 14px;
+    }
+    .product-name {
+      font-weight: bold;
+      font-size: 15px;
+      margin-top: 5px;
+    }
+    .main-promo {
+      display: flex;
+      justify-content: center; /* 🔄 changed from flex-end to center */
+      padding: 40px;
+    }
+    .main-promo img {
+        width: 600px;
+        height: 700px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">GLAM N GO STORE</div>
+    <div class="search-bar">
+      <input type="text" placeholder="Type to search">
+    </div>
+  </div>
+
+  <div class="nav-bar">
+   
+    <a onclick="showTab('hair')">Hair</a>
+    <a onclick="showTab('skincare')">Skincare</a>
+    <a onclick="showTab('makeup')">Makeup</a>
+    <a onclick="showTab('bath')">Bath & Body</a>
+
+  </div>
+
+  <div id="promo" class="main-promo">
+    <img src="https://i.pinimg.com/originals/76/cf/0b/76cf0b1213a199498c8dc62e3cc5c58c.gif" alt="Promotional GIF">
+  </div>
+
+  <div id="hair" class="tab-content">
+    <div class="product">
+      <div class="tag">NEW ARRIVAL</div>
+      <img src="https://cdn.mafrservices.com/sys-master-root/h61/hf2/32513456373790/542034_main.jpg?im=Resize=1700">
+      <div class="brand">OGX</div>
+      <div class="product-name">Coconut Milk Shampoo</div>
+    </div>
+    <div class="product">
+      <img src="https://veelabeauty.com/image/cache/catalog/IMG/L'Or%C3%A9al%20Paris/L-Oreal-Paris-Elvive-Total-Repair-5-Cica-Creme-100ml-900x900.jpg.webp">
+      <div class="brand">L'Oréal</div>
+      <div class="product-name">Elvive Total Repair 5</div>
+    </div>
+    <div class="product">
+      <img src="https://images.ctfassets.net/xq8n4mwvbz58/dR41Cmfpcmdn928acFsrO/cf837341dc64301b10e099ec1df9d6bf/Argan-oil-of-Morocco-conditioner-775x775.jpg??fm=webp&fm=webp&q=70">
+      <div class="brand">Herbal Essences</div>
+      <div class="product-name">Argan Oil Conditioner</div>
+    </div>
+    <div class="product">
+      <img src="https://static.beautytocare.com/cdn-cgi/image/width=1600,height=1600,f=auto/media/catalog/product//g/a/garnier-fructis-strength-shine-fortifying-shampoo-700ml.jpg">
+      <div class="brand">Garnier Fructis</div>
+      <div class="product-name">Grow Strong Shampoo</div>
+    </div>
+    <div class="product">
+      <img src="https://images-cdn.ubuy.co.in/667eee403e853f7e781ab9df-pantene-nutrient-blends-miracle-moisture.jpg">
+      <div class="brand">Pantene</div>
+      <div class="product-name">Miracles Moisture Boost</div>
+    </div>
+  </div>
+
+  <div id="makeup" class="tab-content">
+    <div class="product">
+      <div class="tag">NEW ARRIVAL</div>
+      <img src="nars.webp">
+      <div class="brand">nars</div>
+      <div class="product-name">nars concelear</div>
+    </div>
+    <div class="product">
+      <img src="122.jpg" alt="Maybelline shade 122">
+      <div class="brand">Maybelline New York</div>
+      <div class="product-name">Maybelline shade 122</div>
+    </div>
+    <div class="product">
+      <img src="fit.webp" alt="Fit Me 10 Light">
+      <div class="brand">Maybelline New York</div>
+      <div class="product-name">Fit Me 10 Light Concealer</div>
+    </div>
+    <div class="product">
+      <img src="5.jpg">
+      <div class="brand">SilkyGirl</div>
+      <div class="product-name">SilkyGirl two shade blush</div>
+    </div>
+    <div class="product">
+      <img src="3.jpg">
+      <div class="product-name">revliotion highlighter</div>
+    </div>
+    <div class="product">
+      <img src="4.webp">
+      <div class="product-name">Note blush shade 07</div>
+    </div>
+    <div class="product">
+      <img src="1.webp">
+      <div class="product-name">Renee lipstick</div>
+   </div>
+  </div>
+
+  <div id="skincare" class="tab-content">
+    <div class="product">
+      <div class="tag">NEW ARRIVAL</div>
+      <img src="https://www.lookfantastic.com/images?url=https://static.thcdn.com/productimg/original/11091826-8245227170442176.jpg&format=webp&auto=avif&width=640&height=640&fit=crop">
+      <div class="brand">la roche posay</div>
+      <div class="product-name">facial moisturizer</div>
+    </div>
+    <div class="product">
+      <div class="tag">NEW ARRIVAL</div>
+      <img src="https://publish.purewow.net/wp-content/uploads/sites/2/2022/12/10-Products-for-Sensitive-Skin-La-Roche-Posay.jpg?fit=680%2C800">
+      <div class="brand">la roche posay</div>
+      <div class="product-name">la roche posay toner</div>
+    </div>
+    <div class="product">
+      <img src="https://eg.feel22.com/cdn/shop/files/3337875777759_1.jpg?v=1708518734">
+      <div class="brand">la roche posay x</div>
+      <div class="product-name">Foaming Facial Cleanser</div>
+    </div>
+    <div class="product">
+      <img src="https://eg.jumia.is/unsafe/fit-in/680x680/filters:fill(white)/product/34/572572/1.jpg?2427">
+      <div class="brand">CeraVe</div>
+      <div class="product-name">Foaming Facial Cleanser</div>
+    </div>
+    <div class="product">
+      <img src="https://images-cdn.ubuy.co.in/66463f74b8171368ab02cc18-neutrogena-hydro-boost-gel-cream.jpg">
+      <div class="brand">Neutrogena</div>
+      <div class="product-name">Hydro Boost Gel Cream</div>
+    </div>
+    <div class="product">
+      <img src="https://www.garnier.in/-/media/project/loreal/brand-sites/garnier/apac/in/products/light-complete/vitamin-c-face-serum/vitamin-c-face-serum-50ml/8994993016778-001.jpg?w=1200&rev=98667f5842374740a0090b380a1cb5cc&hash=4AC99B80DE3FC32E5E38E1DBD3882AE9">
+      <div class="brand">Garnier</div>
+      <div class="product-name">Vitamin C serum</div>
+    </div>
+  </div>
+
+
+  <div id="bath" class="tab-content">
+    <div class="product">
+      <div class="tag">NEW ARRIVAL</div>
+      <img src="data:image/jpeg;base64,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">
+      <div class="brand">Dove</div>
+      <div class="product-name">Deep Moisture Body Wash</div>
+    </div>
+    <div class="product">
+      <img src="https://www.nahdionline.com/_next/image?url=https%3A%2F%2Fecombe.nahdionline.com%2Fmedia%2Fcatalog%2Fproduct%2Fa%2Fv%2Faveeno-daily-moisturizing-bodywash-500ml-0hjpg.jpg%3Fwidth%3D500%26height%3D500%26canvas%3D500%2C500%26optimize%3Dhigh%26bg-color%3D255%2C255%2C255%26fit%3Dbounds&w=256&q=75">
+      <div class="brand">Aveeno</div>
+      <div class="product-name">Daily Moisturizing Body Wash</div>
+    </div>
+    <div class="product">
+      <img src="https://static.beautytocare.com/cdn-cgi/image/f=auto/media/catalog/product//n/i/nivea-rich-moisture-creme-caring-shower-cream-750ml_4.jpg">
+      <div class="brand">Nivea</div>
+      <div class="product-name">Nourishing Care Shower Cream</div>
+    </div>
+    <div class="product">
+      <img src="https://www.thebodyshop.com/cdn/shop/files/BRITISH_ROSE_SHOWER_GEL_250ml_1_INABCPS069_a1e54b8b-2a6e-474c-bd84-014e7afb9f36.jpg?v=1742828713">
+      <div class="brand">The Body Shop</div>
+      <div class="product-name">British Rose Shower Gel</div>
+    </div>
+    <div class="product">
+      <img src="https://xoxo-eg.com/cdn/shop/files/Bath-Body-Works-Japanese-Cherry-Blossom-Daily-Nour-2.jpg?v=1723932015">
+      <div class="brand">Bath & Body Works</div>
+      <div class="product-name">Japanese Cherry Blossom Lotion</div>
+    </div>
+  </div>
+  
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      document.getElementById('promo').style.display = 'none';
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
+</body>
+</html>

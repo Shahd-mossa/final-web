@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up | GLAM AND GLOW</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #eab0bb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #5a4a42;
+        }
+        
+        .signup-container {
+            background-color: #f5ebed;
+            padding: 40px 50px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            width: 380px;
+            text-align: center;
+        }
+        
+        .salon-logo {
+            text-align: center;
+            margin-bottom: 15px;
+            font-family: 'monaco', monospace;
+            font-size: 20px;
+            color: #5e3c3c;
+            letter-spacing: 1px;
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            color: #5e3c3c;
+            font-size: 24px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #5e3c3c;
+            font-weight: 500;
+        }
+        
+        input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e8d7d7;
+            border-radius: 4px;
+            font-size: 15px;
+            background-color: #ffffff;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            box-sizing: border-box;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #b38b8b;
+        }
+        
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #d47588;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background-color: #ffb1c1;
+        }
+        
+        .login-link {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 14px;
+            color: #8a6e6e;
+        }
+        
+        .login-link a {
+            color: #b38b8b;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <div class="salon-logo">GLAM AND GLOW</div>
+        <h2>Create Your Account</h2>
+        
+        <form action="/signup" method="post">
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input name="fullname" type="text" id="fullname" placeholder="Enter your full name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input name="email" type="email" id="email" placeholder="Enter your email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input name="phone" type="tel" id="phone" placeholder="Enter your phone number">
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input name="password" type="password" id="password" placeholder="Create a password" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+            </div>
+            
+            <button type="submit">Sign Up</button>
+        </form>
+        
+        <div class="login-link">
+            Already have an account? <a href="login.html">Log in</a>
+        </div>
+    </div>
+
+
+<script src="signup.js"></script>
+
+
+</body>
+</html>

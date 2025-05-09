@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLAM AND GLOW | Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #eab0bb;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #5e3c3c;
+        }
+        .login-container {
+            background-color:#f5ebed;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            color: #5e3c3c;
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 400;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e0d0d0;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            background-color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #b38b8b;
+            box-shadow: 0 0 0 2px rgba(179, 139, 139, 0.2);
+        }
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #d47588;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin-top: 5px;
+        }
+        button:hover {
+            background-color: #ffb1c1;
+            transform: translatey(-5px);
+        }
+        .error {
+            color: #d4a5a5;
+            font-size: 14px;
+            margin-top: 15px;
+            text-align: center;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+            font-family: sans-serif;
+            font-size: 18px;
+            color: #5e3c3c;
+        }
+        .forgot-password {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .forgot-password a {
+            color: #b38b8b;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s;
+        }
+        .forgot-password a:hover {
+            color: #9a7676;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">GLAM AND GLOW</div>
+        <h2>Welcome Back</h2>
+        <form id="loginForm" onsubmit="return validateLogin()">
+            <div class="form-group">
+                <label for="username">Email or Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">    
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <div class="forgot-password">
+                    <a target="_top" href="forgotpassowrd.html">Forgot password?</a>
+                </div>
+            </div>
+            <button type="submit">Sign In</button>
+            <div id="errorMessage" class="error"></div>
+        </form>
+    </div>
+
+    <script>
+        function validateLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            // Simple validation (in a real app, you would check against a database)
+            if (username === 'admin' && password === 'password123') {
+                alert('Welcome back to Serenity Spa!');
+                // In a real application, you would redirect to another page
+                // window.location.href = 'dashboard.html';
+                return false; // Prevent form submission for this demo
+            } else {
+                errorMessage.textContent = 'The email or password you entered is incorrect';
+                return false; // Prevent form submission
+            }
+        }
+    </script>
+</body>
+</html>
