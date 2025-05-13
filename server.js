@@ -37,6 +37,26 @@ app.get('/product', (req, res) => {
     res.render('product');
 });
 
+app.get('/bridal', (req, res) => {
+    res.render('bridal');
+});
+
+app.get('/package1', (req, res) => {
+    res.render('package1');
+});
+
+app.get('/package2', (req, res) => {
+    res.render('package2');
+});
+
+app.get('/package3', (req, res) => {
+    res.render('package3');
+});
+app.get('/package4', (req, res) => {
+    res.render('package4');
+});
+
+
 app.get('/nailcare', (req, res) => {
     res.render('nailcare');
 });
