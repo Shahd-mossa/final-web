@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glam N Go Store</title>
+    <link rel="stylesheet" href="/css/product.css">
+
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">GLAM N GO STORE</div>
+  <div class="search-bar">
+    <input type="text" placeholder="Type to search">
+  </div>
+</div>
+
+<div class="nav-bar">
+  <a onclick="showTab('hair')">Hair</a>
+  <a onclick="showTab('skincare')">Skincare</a>
+  <a onclick="showTab('makeup')">Makeup</a>
+  <a onclick="showTab('bath')">Bath & Body</a>
+</div>
+
+<div id="promo" class="main-promo">
+  <img src="https://i.pinimg.com/originals/76/cf/0b/76cf0b1213a199498c8dc62e3cc5c58c.gif" alt="Promotional GIF">
+</div>
+
+<div id="hair" class="tab-content">
+  <div class="product">
+    <div class="tag">NEW ARRIVAL</div>
+    <img src="https://cdn.mafrservices.com/sys-master-root/h61/hf2/32513456373790/542034_main.jpg?im=Resize=1700">
+    <div class="brand">OGX</div>
+    <div class="product-name">Coconut Milk Shampoo</div>
+  </div>
+  <!-- ... other hair products ... -->
+</div>
+
+<div id="makeup" class="tab-content">
+  <div class="product">
+    <div class="tag">NEW ARRIVAL</div>
+    <img src="/images/nars.webp">
+    <div class="brand">nars</div>
+    <div class="product-name">nars concelear</div>
+  </div>
+  <!-- ... other makeup products ... -->
+</div>
+
+<div id="skincare" class="tab-content">
+  <div class="product">
+    <div class="tag">NEW ARRIVAL</div>
+    <img src="https://www.lookfantastic.com/images?url=https://static.thcdn.com/productimg/original/11091826-8245227170442176.jpg&format=webp&auto=avif&width=640&height=640&fit=crop">
+    <div class="brand">la roche posay</div>
+    <div class="product-name">facial moisturizer</div>
+  </div>
+  <!-- ... other skincare products ... -->
+</div>
+
+<div id="bath" class="tab-content">
+  <div class="product">
+    <div class="tag">NEW ARRIVAL</div>
+    <img src="/images/dove.jpg">
+    <div class="brand">Dove</div>
+    <div class="product-name">Deep Moisture Body Wash</div>
+  </div>
+  <!-- ... other bath products ... -->
+</div>
+
+<script>
+  function showTab(tabId) {
+    document.querySelectorAll('.tab-content').forEach(tab => {
+      tab.classList.remove('active');
+    });
+    document.getElementById('promo').style.display = 'none';
+    document.getElementById(tabId).classList.add('active');
+  }
+</script> 
+</body>
+</html>

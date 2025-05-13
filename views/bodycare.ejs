@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Body Care Services</title>
+    <link rel="stylesheet" href="/css/bodycare.css">
+</head>
+<body>
+
+</body>
+<h1>Body Care Services</h1>
+<div class="cart-icon" onclick="toggleCart()">🛒 Cart</div>
+
+<div class="products">
+    <div class="product">
+        <img src="/images/wax.jpeg" alt="wax">
+        <h3>Waxing Full body</h3>
+        <p>EGP 350</p>
+        <button onclick="addToCart('Full body waxing', 350, '/images/wax.jpeg')">Add service</button>
+    </div>
+    <div class="product">
+        <img src="/images/sugar.jpg" alt="sugar">
+        <h3>Sweet full body</h3>
+        <p>EGP 400</p>
+        <button onclick="addToCart('Sweet full body', 400, '/images/sugar.jpg')">Add service</button>
+    </div>
+    <div class="product">
+        <img src="/images/moro.jpg" alt="moro">
+        <h3>Moroccan bath</h3>
+        <p>EGP 400</p>
+        <button onclick="addToCart('Moroccan bath', 400, '/images/moro.jpg')">Add service</button>
+    </div>
+    <div class="product">
+        <img src="/images/scrub.jpg" alt="scrub">
+        <h3>Full body scrub</h3>
+        <p>EGP 150</p>
+        <button onclick="addToCart('Full body scrub', 150, '/images/scrub.jpg')">Add service</button>
+    </div>
+    <div class="product">
+        <img src="/images/mass.jpg" alt="massage">
+        <h3>Full body massage</h3>
+        <p>EGP 275</p>
+        <button onclick="addToCart('Full body massage', 275, '/images/mass.jpg')">Add service</button>
+    </div>
+    <div class="product">
+        <img src="/images/ther.webp" alt="thread">
+        <h3>Full face thread</h3>
+        <p>EGP 75</p>
+        <button onclick="addToCart('Full face thread', 75, '/images/ther.webp')">Add service</button>
+    </div>
+</div>
+
+<div id="toast" class="toast">
+    <span id="toast-message">Service has been added successfully!</span>
+    <span class="close-toast" onclick="closeToast()">×</span>
+</div>
+
+<div class="cart-panel" id="cart-panel">
+    <span class="close-cart" onclick="toggleCart()">×</span>
+    <h2>My Cart</h2>
+    <div id="cart-items"></div>
+    <hr>
+    <div style="margin-top: 20px;">
+        <strong>Sub-total</strong>: <span style="float:right; color: rgb(235, 132, 188);"><strong><span id="total">0</span> EGP</strong></span>
+    </div>
+    <div style="margin-top: 30px;">
+        <button onclick="window.location.href='/cart'" style="width: 100%; padding: 10px; border: 1px solid rgb(189, 21, 164); background: white; color: rgb(235, 132, 188); font-weight: bold; border-radius: 5px; cursor: pointer;">View Cart</button>
+        <button style="width: 100%; padding: 12px; margin-top: 10px; background-color: rgb(128, 0, 128); color: white; font-weight: bold; border: none; border-radius: 5px; cursor: pointer;">Proceed to Checkout</button>
+    </div>
+</div>
+
+<script>
+    function toggleCart() {
+        document.getElementById("cart-panel").classList.toggle("open");
+        updateCartDisplay();
+    }
+
+    function addToCart(name, price, image) {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const existing = cart.find(item => item.name === name);
+
+        if (existing) {
+            existing.qty += 1;
+        } else {
+            cart.push({ name, price, image, qty: 1 });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        showToast(`${name} has been added to your cart!`);
+        updateCartDisplay();
+    }
+
+    function updateCartDisplay() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const container = document.getElementById("cart-items");
+        const totalEl = document.getElementById("total");
+        container.innerHTML = "";
+        let total = 0;
+
+        cart.forEach((item, index) => {
+            const subtotal = item.price * item.qty;
+            total += subtotal;
+
+            const div = document.createElement("div");
+            div.classList.add("cart-item");
+            div.innerHTML = `
+                <img src="${item.image}" alt="${item.name}">
+                <div class="cart-item-details">
+                    <strong>${item.name}</strong><br>
+                    EGP ${item.price} × ${item.qty} = EGP ${subtotal}
+                    <div class="qty-controls">
+                        <button onclick="changeQty(${index}, -1)">-</button>
+                        <span>${item.qty}</span>
+                        <button onclick="changeQty(${index}, 1)">+</button>
+                        <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+                    </div>
+                </div>
+            `;
+            container.appendChild(div);
+        });
+
+        totalEl.textContent = total;
+    }
+
+    function changeQty(index, delta) {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart[index].qty += delta;
+        if (cart[index].qty <= 0) cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartDisplay();
+    }
+
+    function removeItem(index) {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.splice(index, 1);
+        localStorage.setItem("cart", JSON.stringify(cart));
+        updateCartDisplay();
+    }
+
+    function showToast(message) {
+        const toast = document.getElementById("toast");
+        const messageEl = document.getElementById("toast-message");
+
+        messageEl.textContent = message;
+        toast.classList.add("show");
+
+        setTimeout(() => {
+            toast.classList.remove("show");
+        }, 3000);
+    }
+
+    function closeToast() {
+        document.getElementById("toast").classList.remove("show");
+    }
+</script> 
+</body>
+</html>
