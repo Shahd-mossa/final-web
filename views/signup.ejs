@@ -13,7 +13,7 @@
     <div class="salon-logo">GLAM AND GLOW</div>
     <h2>Create Your Account</h2>
     
-    <form action="/signup" method="post">
+    <form action="/signup" method="post" onsubmit="register()">
         <div class="form-group">
             <label for="fullname">Full Name</label>
             <input name="fullname" type="text" id="fullname" placeholder="Enter your full name" required>
@@ -48,16 +48,20 @@
 </div>
 
 <script>
-    // Add any JavaScript validation or functionality here
-    document.querySelector('form').addEventListener('submit', function(e) {
-        const password = document.getElementById('password').value;
-        const confirmPassword = document.getElementById('confirm-password').value;
-        
-        if (password !== confirmPassword) {
-            e.preventDefault();
-            alert('Passwords do not match!');
-        }
-    });
+    function register() {
+        console.log("DEDpio")
+        fetch("/api/v1/register", {
+            method: 'POST',
+            body: JSON.stringify({
+                email: document.getElementById('email').innerText,
+                phone: document.getElementById('phone').innerText,
+                password: document.getElementById('password').innerText,
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        }).then((res) => console.log(res))
+    }
 </script>
 </body>
 </html>
